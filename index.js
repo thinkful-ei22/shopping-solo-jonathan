@@ -1,6 +1,16 @@
 
 'use strict';
 
+
+// User can press a switch/checkbox to toggle between displaying all items or displaying 
+// only items that are unchecked
+// User can type in a search term and the displayed list will be filtered by item names 
+// only containing that search term
+// User can edit the title of an item
+
+// You must use the state management pattern. Update the store; run the render function. 
+// Do not directly update the DOM.
+
 const STORE = {
   items: [
     {id: cuid(), name: 'apples', checked: false},
@@ -12,9 +22,11 @@ const STORE = {
 };
 
 function generateItemElement(item) {
+    
   return `
     <li class="js-item-index-element" data-item-id="${item.id}">
       <span class="shopping-item js-shopping-item ${item.checked ? 'shopping-item__checked' : ''}">${item.name}</span>
+    </label>
       <div class="shopping-item-controls">
         <button class="shopping-item-toggle js-item-toggle">
             <span class="button-label">check</span>
@@ -23,6 +35,7 @@ function generateItemElement(item) {
             <span class="button-label">delete</span>
         </button>
       </div>
+      
     </li>`;
 }
 
